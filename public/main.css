@@ -16,27 +16,43 @@ button {
 .pokemon-info-container {
     display: flex;
     flex-flow: row wrap;
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
 }
 .pokemon-info-div {
     flex: 1;
     background-color: azure;
     width: 150px;
+    max-width: 150px;
     height: auto;
     margin-right: 5px;
     margin-left: 5px;
     margin-top: 10px;
     font-size: larger;
     text-align: center;
+    border-radius: 15px;
+    box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease-in-out;
+}
+.pokemon-info-div:hover {
+    transform: scale(1.2);
 }
 .single-pokemon-info-div {
     background-color: azure;
-    width: 150px;
+    width: auto;
     height: auto;
     margin-right: auto;
     margin-left: auto;
     margin-top: 10px;
     font-size: larger;
     text-align: center;
+    border-radius: 15px;
+    box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.4);
+}
+.single-pokemon-info-div img {
+    width: 250px;
+    display: block;
 }
 img {
     width: 150px;

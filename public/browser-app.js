@@ -13,6 +13,7 @@ searchForm.addEventListener('submit', (e) => {
 
 backToHomeButton.addEventListener('click', () => {
     backToHomeButton.style.display = 'none'
+    pokemonInfoContainer.innerHTML = ''
     getAllPokemon()
 })
 

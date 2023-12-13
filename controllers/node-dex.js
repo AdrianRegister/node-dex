@@ -7,7 +7,7 @@ async function getAllPokemon(req, res) {
 
 async function getSinglePokemon(req, res) {
     try {
-        const {id: pokemonName} = req.params
+        const {name: pokemonName} = req.params
         const singlePokemon = await Pokemon.findOne({name: pokemonName})
         res.status(200).json(singlePokemon)
     } catch (error) {
