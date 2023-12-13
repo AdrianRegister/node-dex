@@ -1,0 +1,43 @@
+body {
+    background-color: bisque;
+}
+h1 {
+    text-align: center;
+}
+form {
+    text-align: center;
+}
+button {
+    margin-top: 5px;
+}
+.back-to-home {
+    display: none;
+}
+.pokemon-info-container {
+    display: flex;
+    flex-flow: row wrap;
+}
+.pokemon-info-div {
+    flex: 1;
+    background-color: azure;
+    width: 150px;
+    height: auto;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-top: 10px;
+    font-size: larger;
+    text-align: center;
+}
+.single-pokemon-info-div {
+    background-color: azure;
+    width: 150px;
+    height: auto;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 10px;
+    font-size: larger;
+    text-align: center;
+}
+img {
+    width: 150px;
+}
