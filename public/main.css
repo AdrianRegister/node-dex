@@ -81,7 +81,19 @@ img {
     background-color: black;
     border-radius: 15px;
     padding: 10px;
+    margin-top: 5px;
     margin-right: 10px;
     width: 7em;
     color: white;
+}
+table {
+    align-items: center;
+}
+.stat-value-cell {
+    width: 10em;
+    text-align: left;
+    padding: 5px;
+}
+.stat-name-cell {
+    text-align: right;
 }

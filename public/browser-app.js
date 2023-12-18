@@ -74,15 +74,13 @@ async function getOnePokemon(pokeName) {
                 <div class="extra-info-container">
                     <div class="type-height-weight"></div>
                     <div class="flavor-text"></div>
-                    <div class="stats">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </div>
+                    <div class="stats"></div>
                 </div>`
     const {data} = await axios.get(`http://localhost:3000/api/v1/pokemon/${pokeName}/flavor-text`)
     const flavorTextArray = data.pokemonFlavorText.flavor_text_entries
     let enFlavorText = ''
     for (const flavorText of flavorTextArray) {
-        if (flavorText.language.name === 'en' && flavorText.version.name === 'red') {
+        if (flavorText.language.name === 'en' && flavorText.version.name === 'gold') {
             enFlavorText = flavorText.flavor_text
         }
     }
@@ -124,9 +122,53 @@ async function getOnePokemon(pokeName) {
         }
         typeHeightWeight.appendChild(typeSpan)
     }
+    console.log(singlePokemon.stats)
+    const statsInfo = document.querySelector('.stats')
+    const table = document.createElement('table');
+    let statsArray = []
+    for (const stat of singlePokemon.stats) {
+        const tableRow = document.createElement('tr');
+        tableRow.setAttribute('class', 'stat-row');
+        const tableCellOne = document.createElement('td');
+        tableCellOne.setAttribute('class', 'stat-name-cell');
+        const tableCellTwo = document.createElement('td');
+        tableCellTwo.setAttribute('class', 'stat-value-cell');
+
+        tableCellOne.textContent = capitalizeName(stat.stat.name).replace('-', ' ')
+        tableCellTwo.textContent = stat.base_stat
+
+        tableRow.appendChild(tableCellOne);
+        tableRow.appendChild(tableCellTwo);
+        table.appendChild(tableRow);
+        statsInfo.appendChild(table)
+
+        statsArray.push(stat.base_stat)
+    }
+    fillStatBar(statsArray)
 }
 
 // utility functions
 function capitalizeName(name) {
     return name[0].toUpperCase() + name.slice(1, name.length)
+}
+
+function fillStatBar(values) {
+    const statBars = document.querySelectorAll('.stat-value-cell');
+
+    statBars.forEach((statBar, i) => {
+        const total = 255;
+        const percentOfFull = (values[i] / total).toFixed(2);
+
+        if (percentOfFull < 0.2) {
+            statBar.style.background = `linear-gradient(90deg, #F03A5E ${percentOfFull * 100}%, azure ${percentOfFull * 100}%`;
+        } else if (percentOfFull < 0.4) {
+            statBar.style.background = `linear-gradient(90deg, #FFD8B1 ${percentOfFull * 100}%, azure ${percentOfFull * 100}%`;
+        } else if (percentOfFull < 0.6) {
+            statBar.style.background = `linear-gradient(90deg, #FFF7B3 ${percentOfFull * 100}%, azure ${percentOfFull * 100}%`;
+        } else if (percentOfFull < 0.8) {
+            statBar.style.background = `linear-gradient(90deg, #C1E1C1 ${percentOfFull * 100}%, azure ${percentOfFull * 100}%`;
+        } else {
+            statBar.style.background = `linear-gradient(90deg, #B2EBF2 ${percentOfFull * 100}%, azure ${percentOfFull * 100}%`;
+        }   
+    });
 }
