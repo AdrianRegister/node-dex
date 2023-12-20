@@ -6,6 +6,7 @@
     - /api/v1/pokemon/<pokemonName> OR <pokemonID> eg http://localhost:3000/api/v1/pokemon/bulbasaur OR http://localhost:3000/api/v1/pokemon/1
     - /api/v1/pokemon/<pokemonName>/flavor-text eg http://localhost:3000/api/v1/pokemon/bulbasaur/flavor-text
   - Basic client side functionality displaying Pokemon number, name, picture, type, description and stats.
+  - Search function using RegEx to return matching results.
 
 ### WORK IN PROGRESS!
 
